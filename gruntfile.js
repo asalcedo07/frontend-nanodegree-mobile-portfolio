@@ -32,6 +32,29 @@ module.exports = function(grunt) {
           strategy: "mobile"
         }
       }
+    },
+    image: {
+      static: {
+        options: {
+          pngquant: true,
+          optipng: false,
+          zopflipng: true,
+          jpegRecompress: false,
+          jpegoptim: true,
+          mozjpeg: true,
+          gifsicle: true,
+          svgo: true
+        },
+      },
+      dynamic: {
+        files: [{
+          expand: true,
+          // cwd: 'img/',
+          cwd: 'views/images/',
+          src: ['**/*.{png,jpg,gif,svg}'],
+          dest: 'dist/'
+        }]
+      }
     }
   });
 
@@ -52,5 +75,6 @@ module.exports = function(grunt) {
   });
 
   // Register default tasks
+  grunt.loadNpmTasks('grunt-image');
   grunt.registerTask('default', ['psi-ngrok']);
 }
