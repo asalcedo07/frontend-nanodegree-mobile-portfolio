@@ -55,6 +55,17 @@ module.exports = function(grunt) {
           dest: 'dist/'
         }]
       }
+    },
+    htmlmin: {                                     // Task
+      dist: {                                      // Target
+        options: {                                 // Target options
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {                                   // Dictionary of files
+          'dist/index.html': 'index.html'     // 'destination': 'source'
+        }
+      }
     }
   });
 
@@ -76,5 +87,6 @@ module.exports = function(grunt) {
 
   // Register default tasks
   grunt.loadNpmTasks('grunt-image');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.registerTask('default', ['psi-ngrok']);
 }

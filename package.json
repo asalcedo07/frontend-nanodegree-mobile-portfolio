@@ -18,6 +18,7 @@
   "homepage": "https://github.com/matthardwick/frontend-nanodegree-mobile-portfolio#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
+    "grunt-contrib-htmlmin": "^2.0.0",
     "grunt-image": "^2.2.0",
     "grunt-imageoptim": "^1.4.1",
     "grunt-pagespeed": "^2.0.1",
