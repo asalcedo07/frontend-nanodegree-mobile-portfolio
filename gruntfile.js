@@ -57,28 +57,26 @@ module.exports = function(grunt) {
       }
     },
     cssmin: {
+      options: {
+        shorthandCompacting: false,
+        roundingPrecision: -1
+      },
       target: {
-        files: [{
-          expand: true,
-          cwd: 'css',
-          src: ['*.css', '!*.min.css'],
-          dest: 'dist/css',
-          ext: '.min.css'
-        }]
+        files: {
+          'test/style-combined.css': ['views/css/style.css', 'views/css/bootstrap-grid.css']
+        }
       }
     },
     critical: {
-      test: {
-        options: {
-          inline: true,
-          base: 'dist/',
-          css: [
-              'css/style.css'
-          ],
-          minify: true
-        },
-        src: 'index.html',
-        dest: 'test/index-critical.html'
+    test: {
+      options: {
+        inline: true,
+        base: 'dist/',
+        css: [
+            'views/css/style.css'
+        ]},
+        src: 'views/pizza.html',
+        dest: 'test/pizza-critical.html'
       }
     },
     htmlmin: {                                     // Task
@@ -88,7 +86,7 @@ module.exports = function(grunt) {
           collapseWhitespace: true
         },
         files: {                                   // Dictionary of files
-          'dist/index.html': 'test/index-critical.html'     // 'destination': 'source'
+          'dist/views/pizza.html': 'test/pizza-critical.html'     // 'destination': 'source'
         }
       }
     },
