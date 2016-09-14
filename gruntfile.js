@@ -56,6 +56,31 @@ module.exports = function(grunt) {
         }]
       }
     },
+    cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'css',
+          src: ['*.css', '!*.min.css'],
+          dest: 'dist/css',
+          ext: '.min.css'
+        }]
+      }
+    },
+    critical: {
+      test: {
+        options: {
+          inline: true,
+          base: 'dist/',
+          css: [
+              'css/style.css'
+          ],
+          minify: true
+        },
+        src: 'index.html',
+        dest: 'test/index-critical.html'
+      }
+    },
     htmlmin: {                                     // Task
       dist: {                                      // Target
         options: {                                 // Target options
@@ -63,10 +88,10 @@ module.exports = function(grunt) {
           collapseWhitespace: true
         },
         files: {                                   // Dictionary of files
-          'dist/index.html': 'index.html'     // 'destination': 'source'
+          'dist/index.html': 'test/index-critical.html'     // 'destination': 'source'
         }
       }
-    }
+    },
   });
 
   // Register customer task for ngrok
@@ -87,6 +112,8 @@ module.exports = function(grunt) {
 
   // Register default tasks
   grunt.loadNpmTasks('grunt-image');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-critical');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.registerTask('default', ['psi-ngrok']);
 }
