@@ -17,3 +17,24 @@ Tools used to build dist/ directory:
   * grunt-contrib-htmlmin
   * grunt-critical
   * psi-ngrok
+
+## Optimizations to index.html:
+
+* minified stylesheets
+* inlined critical CSS
+* loaded javascript asynchronously
+* optimized images
+* deferred webfont loading
+
+## Optimizations to pizza main.js:
+
+* Changed querySelectorAll to getElementsByClassName
+* Changed functions to alter DOM less per loop
+* Reduced amount of pizzas rendered
+* Optimized pizza slider calculations
+
+## Performance
+
+As of latest commit, index.html showing Pagespeed Scores of 93 (mobile) and 95 (desktop)
+
+pizza.html project showing 60fps and resizing pizzas is less than 5ms using the slider
